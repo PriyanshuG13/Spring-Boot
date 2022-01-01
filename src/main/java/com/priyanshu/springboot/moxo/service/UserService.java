@@ -5,7 +5,7 @@ import com.priyanshu.springboot.moxo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -16,7 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public Optional<User> getUserById(String Id) {
-        return userRepository.findById(Id);
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
+
+    public User getUserById(String Id) {
+        return userRepository.findById(Id).orElse(null);
     }
 }

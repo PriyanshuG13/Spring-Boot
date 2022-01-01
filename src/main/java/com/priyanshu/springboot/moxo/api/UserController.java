@@ -3,11 +3,9 @@ package com.priyanshu.springboot.moxo.api;
 import com.priyanshu.springboot.moxo.model.User;
 import com.priyanshu.springboot.moxo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
 @RequestMapping("api/v1/moxo/user")
 @RestController
@@ -20,7 +18,12 @@ public class UserController {
     }
 
     @GetMapping
-    public Optional<User> getUserById(String Id) {
-        return userService.getUserById(Id);
+    public List<User> getAllUser() {
+        return userService.getAllUser();
+    }
+
+    @GetMapping(path = "{id}")
+    public User getUserById(@PathVariable("id") String id) {
+        return userService.getUserById(id);
     }
 }
