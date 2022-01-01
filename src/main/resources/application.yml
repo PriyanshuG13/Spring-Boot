@@ -4,3 +4,8 @@ app:
     username: postgres
     password: Priyanshu
     pool-size: 30
+
+spring:
+  flyway:
+    baselineOnMigrate: true
+    validateOnMigrate: false
